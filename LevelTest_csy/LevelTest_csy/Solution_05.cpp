@@ -1,7 +1,7 @@
 /*
 * 코드 구현 문제5: 로또 번호 생성기
 * >> rand()함수와 랜덤 정수 값 생성에 대한 이해
-* >> 다음과 같은 알고리즘을 짜보았다.
+* >> 난수를 생성하고 해당 난수가 중복이 아니면 출력한다.
 *	1. 난수를 생성.
 *	2. 생성한 난수가 중복인지 확인한다.
 *		2-1. 중복이 아닌 유효한 수라면 출력
@@ -14,7 +14,7 @@
 #include <math.h>
 using namespace std;
 
-//난수 생성 코드
+//난수 생성
 int RandomIntInRange(int max, int min)
 {
 	float normalized = (float)rand() / RAND_MAX;
@@ -33,7 +33,7 @@ int main(void)
 	cout << "개수: ";
 	cin >> count;
 
-	//생성한 난수가 이미 나왔는지 확인하는 bool 배열
+	//생성한 난수가 이미 나왔는지 확인하는 bool 배열(동적 할당)
 	bool* isPrinted = new bool[max];
 
 	//배열 초기화
@@ -44,23 +44,23 @@ int main(void)
 
 	//난수 생성
 	srand(time(NULL));
-	for (int i = 0; i < count; ++i)
+	int printCount = 0;
+	while (printCount < count)
 	{
 		//난수 생성
 		int rand = RandomIntInRange(max, 1);
-
+		//중복 비교
 		if (isPrinted[rand - 1] == false)
 		{
 			isPrinted[rand - 1] = true;
 			cout << rand << " ";
-		}
-		else
-		{
-			--i;
+			++printCount;
 		}
 	}
 
+	//동적 할당한 배열 반환
 	delete[] isPrinted;
+	isPrinted = nullptr;
 
 	return 0;
 }

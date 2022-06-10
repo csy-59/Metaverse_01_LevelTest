@@ -2,6 +2,9 @@
 * 코드 구현 문제4: 배열의 값 정렬하기
 * >> 정렬에 대한 이해
 * >> 버블 정렬을 사용했다.
+*	1. 배열의 한 요소와 그 뒤의 요소를 비교
+*		1-1. 특정 요소가 더 클 경우 두 요소 자리를 바꿈
+*	>> 위를 배열 요소만큼 반복
 */
 #include <iostream>
 using namespace std;
@@ -14,6 +17,7 @@ void sortArray(int* arr, int n)
 	{
 		for (int j = 0; j < n - 1; j++)
 		{
+			//값 비교
 			if (arr[j] > arr[j + 1])
 			{
 				int temp = arr[j];
