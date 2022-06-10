@@ -244,7 +244,8 @@ int main()
 					bingoCount++;
 				}
 			}
-			else if (inputY == (size - 1 - inputX)) //¿ÞÂÊ ºù°í
+			
+			if (inputY == (size - 1 - inputX)) //¿ÞÂÊ ºù°í
 			{
 				bool isBingo = true;
 
