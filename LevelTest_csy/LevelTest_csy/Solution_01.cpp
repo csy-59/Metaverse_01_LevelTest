@@ -30,8 +30,12 @@ int main(void)
 	cout << "Swap using Reference\t| a = " << a << " b = " << b << "\n";
 }
 
-void swap(int* a, int* b)
+void swap(int* a, int* b) 
 {
+	if (a == NULL || b == NULL)
+	{
+		return;
+	}
 	int temp = *a;
 	*a = *b;
 	*b = temp;
