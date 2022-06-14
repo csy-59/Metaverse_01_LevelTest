@@ -63,5 +63,14 @@
     <ClCompile Include="Answer_07.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Answer_08.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Answer(Pro)_07.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Answer%28Pro%29_08.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
