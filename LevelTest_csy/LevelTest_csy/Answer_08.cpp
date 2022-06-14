@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+/*
 int main()
 {
 	cout << "달팽 달팽: ";
@@ -73,6 +74,94 @@ int main()
 		delete[] snailMap[i];
 	}
 	delete[] snailMap;
+
+	return 0;
+}
+*/
+
+class Snail
+{
+	static const int BLANK = 0;
+	static const int DeltaR[4];
+	static const int DeltaC[4];
+	static enum Direction {
+		DIR_RIGHT,
+		DIR_DOWN,
+		DIR_LEFT,
+		DIR_UP,
+		DIR_MAX
+	};
+
+public:
+
+	~Snail()
+	{
+		delete[] arr;
+		arr = nullptr;
+
+		n = 0;
+	}
+
+	void Make(int N)
+	{
+		arr = new int[N * N];
+
+		n = N;
+
+		int r = 0, c = 0;
+		Direction direction = DIR_RIGHT;
+
+		for (int num = 1; num <= N * N; ++num)
+		{
+			arr[r * N + c] = num;
+
+			int newR = r + DeltaR[direction];
+			int newC = c + DeltaC[direction];
+
+			//판별
+			if (newR < 0 || newR >= N || newC < 0 || newC >= N || arr[newR * N + newC] == BLANK)
+			{
+				//방향 전환
+				direction = (Direction)((direction + 1) % DIR_MAX);
+
+				newR = r + DeltaR[direction];
+				newC = c + DeltaC[direction];
+			}
+
+			r = newR;
+			c = newC;
+		}
+	}
+
+	void Print()
+	{
+		for (int i = 0; i < n; ++i)
+		{
+			for (int j = 0; j < n; ++j)
+			{
+				cout << arr[i * n + j] << "\t";
+			}
+			cout << "\n";
+		}
+	}
+private:
+	int* arr = nullptr;
+	int n = 0;
+};
+
+const int Snail::DeltaR[4] = { 0, 1, 0, -1 };
+const int Snail::DeltaC[4] = { 1, 0, -1, 0 };
+
+
+int main()
+{
+	int n;
+	cin >> n;
+
+	Snail snail;
+	snail.Make(n);
+
+	snail.Print();
 
 	return 0;
 }
