@@ -94,32 +94,61 @@ class Snail
 
 public:
 
+	Snail() = default;
+	Snail(const Snail& other)
+		: size(other.size)
+	{
+		arr = new int[size];
+
+		for (int i = 0; i < size; i++)
+		{
+			for (int j = 0; j < size; j++)
+			{
+				arr[i * size + j] = other.arr[i * size + j];
+			}
+		}
+	}
+	Snail& operator=(const Snail& other)
+	{
+		delete[] arr;
+		arr = nullptr;
+
+		size = other.size;
+
+		for (int i = 0; i < size; i++)
+		{
+			for (int j = 0; j < size; j++)
+			{
+				arr[i * size + j] = other.arr[i * size + j];
+			}
+		}
+	}
 	~Snail()
 	{
 		delete[] arr;
 		arr = nullptr;
 
-		n = 0;
+		size = 0;
 	}
 
 	void Make(int N)
 	{
-		arr = new int[N * N];
+		arr = new int[size * size];
 
-		n = N;
+		size = N;
 
 		int r = 0, c = 0;
 		Direction direction = DIR_RIGHT;
 
-		for (int num = 1; num <= N * N; ++num)
+		for (int num = 1; num <= size * size; ++num)
 		{
-			arr[r * N + c] = num;
+			arr[r * size + c] = num;
 
 			int newR = r + DeltaR[direction];
 			int newC = c + DeltaC[direction];
 
 			//판별
-			if (newR < 0 || newR >= N || newC < 0 || newC >= N || arr[newR * N + newC] == BLANK)
+			if (newR < 0 || newR >= size || newC < 0 || newC >= size || arr[newR * size + newC] == BLANK)
 			{
 				//방향 전환
 				direction = (Direction)((direction + 1) % DIR_MAX);
@@ -135,18 +164,18 @@ public:
 
 	void Print()
 	{
-		for (int i = 0; i < n; ++i)
+		for (int i = 0; i < size; ++i)
 		{
-			for (int j = 0; j < n; ++j)
+			for (int j = 0; j < size; ++j)
 			{
-				cout << arr[i * n + j] << "\t";
+				cout << arr[i * size + j] << "\t";
 			}
 			cout << "\n";
 		}
 	}
 private:
 	int* arr = nullptr;
-	int n = 0;
+	int size = 0;
 };
 
 const int Snail::DeltaR[4] = { 0, 1, 0, -1 };
