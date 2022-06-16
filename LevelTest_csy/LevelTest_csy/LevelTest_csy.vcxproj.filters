@@ -86,5 +86,11 @@
     <ClInclude Include="Answer(Pro)_05-2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Answer(Pro)_07(class).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Answer(Pro)_08(class).h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

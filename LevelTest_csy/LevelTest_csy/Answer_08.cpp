@@ -79,7 +79,7 @@ int main()
 }
 */
 
-class Snail
+class SnailArray
 {
 	static const int BLANK = 0;
 	static const int DeltaR[4];
@@ -94,8 +94,8 @@ class Snail
 
 public:
 
-	Snail() = default;
-	Snail(const Snail& other)
+	SnailArray() = default;
+	SnailArray(const SnailArray& other)
 		: size(other.size)
 	{
 		arr = new int[size];
@@ -108,7 +108,7 @@ public:
 			}
 		}
 	}
-	Snail& operator=(const Snail& other)
+	SnailArray& operator=(const SnailArray& other)
 	{
 		delete[] arr;
 		arr = nullptr;
@@ -123,7 +123,7 @@ public:
 			}
 		}
 	}
-	~Snail()
+	~SnailArray()
 	{
 		delete[] arr;
 		arr = nullptr;
@@ -138,9 +138,9 @@ public:
 		size = N;
 
 		int r = 0, c = 0;
-		Direction direction = DIR_RIGHT;
+		enum Direction direction = DIR_RIGHT;
 
-		for (int num = 1; num <= size * size; ++num)
+		for (int num = 1; num <= size * size; ++num) 
 		{
 			arr[r * size + c] = num;
 
@@ -178,8 +178,8 @@ private:
 	int size = 0;
 };
 
-const int Snail::DeltaR[4] = { 0, 1, 0, -1 };
-const int Snail::DeltaC[4] = { 1, 0, -1, 0 };
+const int SnailArray::DeltaR[4] = { 0, 1, 0, -1 };
+const int SnailArray::DeltaC[4] = { 1, 0, -1, 0 };
 
 
 int main()
@@ -187,7 +187,7 @@ int main()
 	int n;
 	cin >> n;
 
-	Snail snail;
+	SnailArray snail;
 	snail.Make(n);
 
 	snail.Print();

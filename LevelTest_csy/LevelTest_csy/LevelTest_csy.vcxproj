@@ -224,6 +224,8 @@
   <ItemGroup>
     <ClInclude Include="Answer(Pro)_05-1(class).h" />
     <ClInclude Include="Answer(Pro)_05-2.h" />
+    <ClInclude Include="Answer(Pro)_07(class).h" />
+    <ClInclude Include="Answer(Pro)_08(class).h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

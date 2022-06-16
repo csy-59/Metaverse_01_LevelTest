@@ -15,7 +15,9 @@ class Deck
 {
 	static bool isCardUsed[53];
 	static int leftCardCount;
+
 	static const int MAX_CARD_COUNT = 53;
+
 	static const string CARD_TYPE[5];
 	static const string CARD_NUMBER[13];
 
@@ -70,7 +72,7 @@ public:
 	}
 	std::string ToString()
 	{
-		if (cards[0] == -1)
+		if (leftCardCount < 7)
 		{
 			return "The Deck is Empty\n";
 		}
@@ -87,7 +89,7 @@ public:
 	}
 
 private:
-	int cards[7] = { -1 };
+	int cards[7];
 };
 bool Deck::isCardUsed[53] = { false };
 const string Deck::CARD_TYPE[5] = { "¢¼" , "¢À" ,"¢¾" ,"¡ß" ,"Joker" };
